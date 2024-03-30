@@ -154,7 +154,7 @@ class FormioPublicController(http.Controller):
             return request.render('formio.formio_form_public_new_embed', values)
 
     @http.route('/formio/public/form/new/current/<string:builder_public_uuid>', type='http', auth='public', methods=['GET'], website=True)
-    def public_form_new_public_uuid_root(self, builder_public_uuid):
+    def public_form_new_public_uuid_root(self, builder_public_uuid, **kwargs):
         """ TODO LEGACY 18.0
         - Rename endpoint method to: public_form_new_root.
         - Change endpount URL to: '/formio/public/form/new/<string:builder_public_uuid>'
@@ -184,7 +184,7 @@ class FormioPublicController(http.Controller):
             return request.render('formio.formio_form_public_new_embed', values)
 
     @http.route('/formio/public/form/new/<string:builder_uuid>/config', type='http', auth='public', csrf=False, website=True)
-    def public_form_new_config(self, builder_uuid):
+    def public_form_new_config(self, builder_uuid, **kwargs):
         formio_builder = self._get_public_builder(builder_uuid)
         res = {'schema': {}, 'options': {}}
 
@@ -205,7 +205,7 @@ class FormioPublicController(http.Controller):
         return request.make_json_response(res)
 
     @http.route('/formio/public/form/new/<string:builder_uuid>/submission', type='http', auth='public', csrf=False, website=True)
-    def public_form_new_submission(self, builder_uuid):
+    def public_form_new_submission(self, builder_uuid, **kwargs):
         formio_builder = self._get_public_builder(builder_uuid)
 
         if not formio_builder or not formio_builder.public:

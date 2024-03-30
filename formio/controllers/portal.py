@@ -240,7 +240,7 @@ class FormioCustomerPortal(CustomerPortal):
         return request.render("formio.portal_my_formio_new", values)
 
     @http.route('/formio/portal/form/new/<string:builder_name>', type='http', auth='user', methods=['GET'], website=True)
-    def portal_form_new_root(self, builder_name):
+    def portal_form_new_root(self, builder_name, **kwargs):
         builder = self._get_builder_name(builder_name)
         if not builder:
             msg = 'Form Builder (name) %s: not found' % builder_name
@@ -266,7 +266,7 @@ class FormioCustomerPortal(CustomerPortal):
     #####################
 
     @http.route('/formio/portal/form/new/<string:builder_uuid>/config', type='http', auth='user', csrf=False, website=True)
-    def form_new_config(self, builder_uuid):
+    def form_new_config(self, builder_uuid, **kwargs):
         builder = self._get_builder_uuid(builder_uuid)
         res = {'schema': {}, 'options': {}, 'params': {}}
 

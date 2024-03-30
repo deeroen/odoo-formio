@@ -1,5 +1,14 @@
 # Changelog
 
+## 17.0.1.7
+
+Migrate the Form Builder (`formio.builder`) field `submission_url_add_query_params_from` to endpoint specific fields:
+- `portal_submission_url_add_query_params_from`
+- `portal_submission_url_add_query_params_from`
+- `backend_submission_url_add_query_params_from`
+
+This makes it possible to distinguish the setting per endpoint.
+
 ## 17.0.1.6
 
 Minor form builder view migration fix (column_invisible).

@@ -183,9 +183,10 @@ See LICENSE file for full licensing details. -->
                                     <field name="debug" widget="boolean_toggle"/>
                                 </group>
                                 <group name="other_settings" string="Other">
-                                    <field name="submission_url_add_query_params_from"/>
+                                    <field name="backend_submission_url_add_query_params_from" readonly="is_locked == True"/>
                                     <div class="text-muted" colspan="2">
                                         <i class="fa fa-info-circle" title="info"/> Enables adding the URL query params from the window's iframe (src) or window.parent to the form's submission (load) URL endpoint.
+                                        <i class="fa fa-info-circle" title="info"/> Similar setting for portal and public/website forms (see tabs).
                                     </div>
                                 </group>
                                 <separator/>
@@ -204,7 +205,11 @@ See LICENSE file for full licensing details. -->
                                 <group name="portal_redirect_after_submit" string="Redirect After Submit">
                                     <field name="portal_submit_done_url" groups="formio.group_formio_admin" string="Redirect URL" readonly="0"/>
                                 </group>
-                                <group string="Miscellaneous">
+                                <group name="misc" string="Miscellaneous">
+                                    <field name="portal_submission_url_add_query_params_from" string="Add Query Params to Submission URL from" readonly="is_locked == True"/>
+                                    <div class="text-muted" colspan="2">
+                                        <i class="fa fa-info-circle" title="info"/> Enables adding the URL query params from the window's iframe (src) or window.parent to the form's submission (load) URL endpoint.
+                                    </div>
                                     <field name="portal_scroll_into_view_selector"
                                            string="Scroll Into View Selector"
                                            groups="formio.group_formio_admin"
@@ -241,7 +246,11 @@ See LICENSE file for full licensing details. -->
                                 <group name="public_redirect_after_submit" string="Redirect After Submit">
                                     <field name="public_submit_done_url" groups="formio.group_formio_admin" string="Redirect URL" readonly="0"/>
                                 </group>
-                                <group string="Miscellaneous">
+                                <group name="misc" string="Miscellaneous">
+                                    <field name="public_submission_url_add_query_params_from" string="Add Query Params to Submission URL from" readonly="is_locked == True"/>
+                                    <div class="text-muted" colspan="2">
+                                        <i class="fa fa-info-circle" title="info"/> Enables adding the URL query params from the window's iframe (src) or window.parent to the form's submission (load) URL endpoint.
+                                    </div>
                                     <field name="public_scroll_into_view_selector"
                                            string="Scroll Into View Selector"
                                            groups="formio.group_formio_admin"
@@ -356,7 +365,7 @@ See LICENSE file for full licensing details. -->
                                         style="height: 100%"/>
                                 </group>
                             </div>
-                            
+
                             <field name="formio_js_options" placeholder="{ ... }" readonly="is_locked == True"/>
                             <div class="text-muted mt-4">
                                 <i class="fa fa-info-circle" title="info"/><strong> Documentation</strong><br/>

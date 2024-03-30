@@ -107,6 +107,16 @@ class Builder(models.Model):
     )
     portal = fields.Boolean("Portal", tracking=True, help="Form is accessible by assigned portal user")
     portal_url = fields.Char(string='Portal URL', compute='_compute_portal_urls')
+    portal_submission_url_add_query_params_from = fields.Selection(
+        string="Portal Add Query Params to Submission URL from",
+        selection=[
+            ("window", "Window iframe (src)"),
+            ("window.parent", "Window parent (URL)"),
+        ],
+        default='window',
+        tracking=True,
+        help="Enables adding the URL query params from the window's iframe (src) or window.parent to the form submission URL endpoint.",
+    )
     portal_save_draft_done_url = fields.Char(
         string='Portal Save-Draft Done URL', tracking=True,
         help="""\
@@ -135,6 +145,16 @@ class Builder(models.Model):
         default=lambda self: self._default_uuid(), required=True, readonly=True, copy=True,
         string='Public UUID')
     public_url = fields.Char(string='Public URL', compute='_compute_public_url')
+    public_submission_url_add_query_params_from = fields.Selection(
+        string="Public Add Query Params to Submission URL from",
+        selection=[
+            ("window", "Window iframe (src)"),
+            ("window.parent", "Window parent (URL)"),
+        ],
+        default='window',
+        tracking=True,
+        help="Enables adding the URL query params from the window's iframe (src) or window.parent to the form submission URL endpoint.",
+    )
     public_save_draft_done_url = fields.Char(
         string='Public Save-Draft Done URL', tracking=True,
         help="""\
@@ -184,8 +204,17 @@ class Builder(models.Model):
     wizard = fields.Boolean("Wizard", tracking=True)
     wizard_on_next_page_save_draft = fields.Boolean("Wizard on Next Page Save Draft", tracking=True)
     wizard_on_change_page_save_draft = fields.Boolean("Wizard on Change Page Save Draft", tracking=True)
-    submission_url_add_query_params_from = fields.Selection(
-        string="Add Query Params to Submission URL from",
+    # submission_url_add_query_params_from = fields.Selection(
+    #     string="Add Query Params to Submission URL from",
+    #     selection=[
+    #         ("window", "Window iframe (src)"),
+    #         ("window.parent", "Window parent (URL)"),
+    #     ],
+    #     tracking=True,
+    #     help="Enables adding the URL query params from the window's iframe (src) or window.parent to the form submission URL endpoint.",
+    # )
+    backend_submission_url_add_query_params_from = fields.Selection(
+        string="Backend Add Query Params to Submission URL from",
         selection=[
             ("window", "Window iframe (src)"),
             ("window.parent", "Window parent (URL)"),
@@ -572,7 +601,7 @@ class Builder(models.Model):
             'readOnly': self.is_locked,
             'autoSave': self.auto_save,
             'wizard_on_change_page_save_draft': self.wizard and self.wizard_on_change_page_save_draft,
-            'submission_url_add_query_params_from': self.submission_url_add_query_params_from,
+            'backend_submission_url_add_query_params_from': self.backend_submission_url_add_query_params_from,
         }
         return params
 
@@ -626,7 +655,7 @@ class Builder(models.Model):
             'portal_submit_done_url': self.portal_submit_done_url,
             'scroll_into_view_selector': self.portal_scroll_into_view_selector,
             'wizard_on_change_page_save_draft': self.wizard and self.wizard_on_change_page_save_draft,
-            'submission_url_add_query_params_from': self.submission_url_add_query_params_from,
+            'submission_url_add_query_params_from': self.portal_submission_url_add_query_params_from,
         }
         return params
 
@@ -638,7 +667,7 @@ class Builder(models.Model):
             'public_submit_done_url': self.public_submit_done_url,
             'scroll_into_view_selector': self.public_scroll_into_view_selector,
             'wizard_on_change_page_save_draft': self.wizard and self.wizard_on_change_page_save_draft,
-            'submission_url_add_query_params_from': self.submission_url_add_query_params_from,
+            'submission_url_add_query_params_from': self.public_submission_url_add_query_params_from,
         }
         return params
 
