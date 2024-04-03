@@ -142,7 +142,7 @@ class Builder(models.Model):
     )
     public = fields.Boolean("Public", tracking=True, help="Form is public accessible (e.g. used in Shop checkout, Events registration")
     public_uuid = fields.Char(
-        default=lambda self: self._default_uuid(), required=True, readonly=True, copy=True,
+        default=lambda self: self._default_uuid(), required=True, readonly=True, copy=False,
         string='Public UUID')
     public_url = fields.Char(
         string='Public URL',
