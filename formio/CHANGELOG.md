@@ -1,5 +1,13 @@
 # Changelog
 
+## 17.0.1.8
+
+In Form Builder views (list, form, search) add:
+- Field Public UUID (`public_uuid`)
+- Public Current URL (`public_current_url`)
+
+This is in addition to version 17.0.1.5.
+
 ## 17.0.1.7
 
 Migrate the Form Builder (`formio.builder`) field `submission_url_add_query_params_from` to endpoint specific fields:

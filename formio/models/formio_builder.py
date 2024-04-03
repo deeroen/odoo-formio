@@ -144,7 +144,16 @@ class Builder(models.Model):
     public_uuid = fields.Char(
         default=lambda self: self._default_uuid(), required=True, readonly=True, copy=True,
         string='Public UUID')
-    public_url = fields.Char(string='Public URL', compute='_compute_public_url')
+    public_url = fields.Char(
+        string='Public URL',
+        compute='_compute_public_url',
+        help='Public Form for this form builder version'
+    )
+    public_current_url = fields.Char(
+        string='Public Current URL',
+        compute='_compute_public_url',
+        help='Public Form with versioning (same Name) in state Current'
+    )
     public_submission_url_add_query_params_from = fields.Selection(
         string="Public Add Query Params to Submission URL from",
         selection=[
@@ -403,6 +412,7 @@ class Builder(models.Model):
             if r.public and request:
                 url_root = request.httprequest.url_root
                 self.public_url = '%s%s/%s' % (url_root, 'formio/public/form/new', r.uuid)
+                self.public_current_url = '%s%s/%s' % (url_root, 'formio/public/form/new/current', r.public_uuid)
             else:
                 r.public_url = False
 
