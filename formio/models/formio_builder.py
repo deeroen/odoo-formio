@@ -542,6 +542,7 @@ class Builder(models.Model):
         alter = {}
         alter["parent_id"] = self.id
         alter["state"] = STATE_DRAFT
+        alter["current_uuid"] = builder.current_uuid
         alter["version"] = builder.version + 1
         alter["version_comment"] = _('Write comment about version %s ...') % alter["version"]
 
