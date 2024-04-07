@@ -1,16 +1,23 @@
 # Changelog
 
-## 16.0.11.18
+## 16.0.11.0.0
+
+Form Builder view improvements:
+- Don't show Auto-save badge if state is CURRENT.
+- Switch Locked and Auto-save badge positions.
+- Unlocked badge as warning.
+
+## 16.0.10.18
 
 In the Form Builder, show a "Locked" badge in case it is locked.
 
-## 16.0.11.17
+## 16.0.10.17
 
 - Fix crashing forms due to 16.0.11.16 (Scroll Into View).
 - Improvements for Scroll Into View feature.
 - Backwards compatibilty fix for (component) onChange event.
 
-## 16.0.11.16
+## 16.0.10.16
 
 Add configurable automatic scrolling, especially useful in long-page wizard forms after switching previous/next page.\
 This scrolls an element (CSS selector) into the visible area of the browser window.\
