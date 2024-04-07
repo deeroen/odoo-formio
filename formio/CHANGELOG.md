@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.0.2.0.1
+
+- Fix migration scipts to support big jumps/leaps without crashing due to non-existent fields.
+- Form Builder: Add badge "Locked Disabled".
+
 ## 17.0.2.0.0
 
 Rename and migrate Form Builder field `public_uuid` to `current_uuid`.\
