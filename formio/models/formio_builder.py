@@ -60,7 +60,7 @@ class Builder(models.Model):
         default=lambda self: self._default_formio_js_options(),
         string='formio.js Javascript Options')
     res_model_id = fields.Many2one(
-        "ir.model", compute='_res_model_id', store=True,
+        "ir.model", compute='_compute_res_model_id', store=True,
         string="Model", help="Model as resource this form represents or acts on")
     res_model = fields.Char(compute='_compute_res_model_id', store=True)
     formio_res_model_id = fields.Many2one(
@@ -387,7 +387,7 @@ class Builder(models.Model):
                 self.schema = json.dumps(schema)
 
     @api.depends('formio_res_model_id')
-    def _res_model_id(self):
+    def _compute_res_model_id(self):
         for r in self:
             if r.formio_res_model_id:
                 r.res_model_id = r.formio_res_model_id.ir_model_id.id
