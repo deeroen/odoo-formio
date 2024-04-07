@@ -40,6 +40,9 @@ class Builder(models.Model):
     uuid = fields.Char(
         default=lambda self: self._default_uuid(), required=True, readonly=True, copy=False,
         string='UUID')
+    current_uuid = fields.Char(
+        default=lambda self: self._default_uuid(), required=True, readonly=True, copy=False,
+        string='Current UUID')
     title = fields.Char(
         "Title", required=True,
         help="The form title in the current language", tracking=True)
@@ -57,7 +60,7 @@ class Builder(models.Model):
         default=lambda self: self._default_formio_js_options(),
         string='formio.js Javascript Options')
     res_model_id = fields.Many2one(
-        "ir.model", compute='_compute_res_model_id', store=True,
+        "ir.model", compute='_res_model_id', store=True,
         string="Model", help="Model as resource this form represents or acts on")
     res_model = fields.Char(compute='_compute_res_model_id', store=True)
     formio_res_model_id = fields.Many2one(
@@ -141,9 +144,6 @@ class Builder(models.Model):
         help="Especially for long wizard pages upon prev/next page. This scrolls an element (CSS selector) into the visible area of the browser window."
     )
     public = fields.Boolean("Public", tracking=True, help="Form is public accessible (e.g. used in Shop checkout, Events registration")
-    public_uuid = fields.Char(
-        default=lambda self: self._default_uuid(), required=True, readonly=True, copy=False,
-        string='Public UUID')
     public_url = fields.Char(
         string='Public URL',
         compute='_compute_public_url',
@@ -387,7 +387,7 @@ class Builder(models.Model):
                 self.schema = json.dumps(schema)
 
     @api.depends('formio_res_model_id')
-    def _compute_res_model_id(self):
+    def _res_model_id(self):
         for r in self:
             if r.formio_res_model_id:
                 r.res_model_id = r.formio_res_model_id.ir_model_id.id
@@ -411,10 +411,11 @@ class Builder(models.Model):
         for r in self:
             if r.public and request:
                 url_root = request.httprequest.url_root
-                self.public_url = '%s%s/%s' % (url_root, 'formio/public/form/new', r.uuid)
-                self.public_current_url = '%s%s/%s' % (url_root, 'formio/public/form/new/current', r.public_uuid)
+                r.public_url = '%s%s/%s' % (url_root, 'formio/public/form/new', r.uuid)
+                r.public_current_url = '%s%s/%s' % (url_root, 'formio/public/form/new/current', r.current_uuid)
             else:
                 r.public_url = False
+                r.public_current_url = False
 
     @api.depends('portal')
     def _compute_portal_urls(self):
@@ -697,10 +698,10 @@ class Builder(models.Model):
             return False
 
     @api.model
-    def get_public_builder_public_uuid(self, public_uuid):
+    def get_public_builder_current_uuid(self, current_uuid):
 
         domain = [
-            ('public_uuid', '=', public_uuid),
+            ('current_uuid', '=', current_uuid),
             ('state', '=', STATE_CURRENT),
             ('public', '=', True),
         ]

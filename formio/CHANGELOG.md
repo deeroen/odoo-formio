@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.0.2.0.0
+
+Rename and migrate Form Builder field `public_uuid` to `current_uuid`.\
+The `current_uuid` is a more meaningful name.
+
 ## 17.0.1.8
 
 In Form Builder views (list, form, search) add:

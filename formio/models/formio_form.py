@@ -118,7 +118,7 @@ class Form(models.Model):
     show_state = fields.Boolean("Show State")
     show_id = fields.Boolean("Show ID")
     show_uuid = fields.Boolean("Show UUID")
-    show_user_metadata = fields.Boolean("Show User Metadata")
+    show_user_metadata = fields.Boolean(string="Show User Metadata")
     iframe_resizer_body_margin = fields.Char(
         "iFrame Resizer bodyMargin",
         related="builder_id.iframe_resizer_body_margin",
@@ -502,7 +502,7 @@ class Form(models.Model):
         self.public_share = self.builder_id.public
         self.public_access_interval_number = self.builder_id.public_access_interval_number
         self.public_access_interval_type = self.builder_id.public_access_interval_type
-        
+
         if self.builder_id.public:
             self.public_access_date_from = fields.Datetime.now()
 

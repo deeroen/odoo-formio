@@ -12,6 +12,7 @@ See LICENSE file for full licensing details. -->
                   decoration-muted="state in ('OBSOLETE')">
                 <field name="id" optional="hide"/>
                 <field name="uuid" optional="hide"/>
+                <field name="current_uuid" optional="hide"/>
                 <field name="title"/>
                 <field name="name"/>
                 <field name="version"/>
@@ -22,7 +23,6 @@ See LICENSE file for full licensing details. -->
                 <field name="portal" optional="show"/>
                 <field name="portal_url" optional="hide"/>
                 <field name="public" optional="show"/>
-                <field name="public_uuid" optional="hide"/>
                 <field name="public_access_rule_type" optional="hide"/>
                 <field name="public_url" optional="hide"/>
                 <field name="formio_version_id"/>
@@ -126,6 +126,7 @@ See LICENSE file for full licensing details. -->
                         </group>
                         <group>
                             <field name="uuid" invisible="id == False"/>
+                            <field name="current_uuid" invisible="id == False"/>
                             <field name="is_locked" invisible="state != 'CURRENT'" widget="boolean_toggle"/>
                             <field name="auto_save" widget="boolean_toggle"/>
                             <field name="backend_use_draft" invisible="state != 'DRAFT'" widget="boolean_toggle"/>
@@ -237,7 +238,6 @@ See LICENSE file for full licensing details. -->
                                     </div>
                                 </group>
                                 <group name="general" string="General">
-                                    <field name="public_uuid"/>
                                     <field name="public_access_rule_type" required="public == True"/>
                                     <div class="text-muted" colspan="2">
                                         <i class="fa fa-info-circle" title="info"/> Other <em>Public Access Rule Type(s)</em> can be implemented by other modules.
@@ -423,7 +423,7 @@ See LICENSE file for full licensing details. -->
                 <field name="title"/>
                 <field name="name"/>
                 <field name="uuid"/>
-                <field name="public_uuid"/>
+                <field name="current_uuid"/>
                 <field name="formio_version_id"/>
                 <separator/>
                 <filter string="Draft" name="state_draft"
@@ -445,7 +445,7 @@ See LICENSE file for full licensing details. -->
                 <group expand="0" string="Group By">
                     <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
                     <filter string="State" name="state" domain="[]" context="{'group_by':'state'}"/>
-                    <filter string="Public UUID" name="public_uuid" domain="[]" context="{'group_by':'public_uuid'}"/>
+                    <filter string="Current UUID" name="current_uuid" domain="[]" context="{'group_by':'current_uuid'}"/>
                 </group>
             </search>
         </field>
