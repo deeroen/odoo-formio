@@ -26,7 +26,7 @@ See LICENSE file for full licensing details. -->
                 </t>
 
                 <link rel="stylesheet" t-attf-href="/formio/static/src/css/formio_builder_embed.css?{{ uuid }}"/>
-                
+
                 <!-- Odoo JS dependencies could cause clashes with formio.js -->
                 <script type="text/javascript" src="/web/static/lib/jquery/jquery.js"></script>
                 <script type="text/javascript" src="/web/static/lib/owl/owl.js"></script>
@@ -59,12 +59,12 @@ See LICENSE file for full licensing details. -->
                 </t>
                 <!-- Actions top -->
                 <div id="formio_builder_actions_top" class="formio_builder_actions row">
-                    <div class="col-xs-6 col-sm-3 col-md-2">
+                    <div t-if="not builder.is_locked" class="col-xs-6 col-sm-3 col-md-2">
                         <t t-if="not builder.auto_save">
                             <a href="#" class="btn btn-warning d-none formio_save" t-attf-onclick="saveFormBuilder(this)"><i class="fa fa-xl fa-save"/> Save Form</a>
                         </t>
                         <t t-else="">
-                            <div class="text-muted formio_text">Auto-save is enabled</div>
+                            <div class="text-muted formio_text">Auto-save Enabled</div>
                         </t>
                     </div>
                 </div>
@@ -74,12 +74,12 @@ See LICENSE file for full licensing details. -->
                 </div>
                 <!-- Actions bottom -->
                 <div id="formio_builder_actions_bottom" class="formio_builder_actions row">
-                    <div class="col-xs-6 col-sm-3 col-md-2">
+                    <div t-if="not builder.is_locked" class="col-xs-6 col-sm-3 col-md-2">
                         <t t-if="not builder.auto_save">
                             <a href="#" class="btn btn-warning d-none formio_save" t-attf-onclick="saveFormBuilder(this)"><i class="fa fa-xl fa-save"/> Save Form</a>
                         </t>
                         <t t-else="">
-                            <div class="text-muted formio_text">Auto-save is enabled</div>
+                            <div class="text-muted formio_text">Auto-save Enabled</div>
                         </t>
                     </div>
                 </div>
