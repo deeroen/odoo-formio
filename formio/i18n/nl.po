@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 10:00+0000\n"
-"PO-Revision-Date: 2024-03-30 11:06+0100\n"
+"POT-Creation-Date: 2024-04-07 19:07+0000\n"
+"PO-Revision-Date: 2024-04-07 21:13+0200\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -220,6 +220,25 @@ msgstr ""
 "<i class=\"fa fa-info-circle\" title=\"info\"/> <strong>Forms Ref:</strong>\n"
 "Referentie gebruikt in Form Builder(s) om de link tussen een Serveractie en "
 "Form Builder te identificeren."
+
+#. module: formio
+#: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_form
+msgid ""
+"<i class=\"fa fa-info-circle\" title=\"info\"/> <strong>Public Current URL:</"
+"strong> Public Form with versioning (same Name) in state Current"
+msgstr ""
+"<i class=\"fa fa-info-circle\" title=\"info\"/><strong> Openbare actuele "
+"URL:</strong> Openbaar formulier met versiebeheer (dezelfde naam) in status "
+"Actueel"
+
+#. module: formio
+#: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_form
+msgid ""
+"<i class=\"fa fa-info-circle\" title=\"info\"/> <strong>Public URL:</strong> "
+"Public Form for this form builder version"
+msgstr ""
+"<i class=\"fa fa-info-circle\" title=\"info\"/><strong> Openbare "
+"URL:</strong> Openbaar formulier voor deze form builder versie."
 
 #. module: formio
 #: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_form
@@ -1006,7 +1025,6 @@ msgstr "Maak nieuwe versie"
 #: model:ir.model.fields,field_description:formio.field_formio_builder_js_options__create_uid
 #: model:ir.model.fields,field_description:formio.field_formio_builder_translation__create_uid
 #: model:ir.model.fields,field_description:formio.field_formio_default_asset_css__create_uid
-#: model:ir.model.fields,field_description:formio.field_formio_extra_asset__create_uid
 #: model:ir.model.fields,field_description:formio.field_formio_form__create_uid
 #: model:ir.model.fields,field_description:formio.field_formio_license__create_uid
 #: model:ir.model.fields,field_description:formio.field_formio_res_model__create_uid
@@ -1026,7 +1044,6 @@ msgstr "Aangemaakt door"
 #: model:ir.model.fields,field_description:formio.field_formio_builder_js_options__create_date
 #: model:ir.model.fields,field_description:formio.field_formio_builder_translation__create_date
 #: model:ir.model.fields,field_description:formio.field_formio_default_asset_css__create_date
-#: model:ir.model.fields,field_description:formio.field_formio_extra_asset__create_date
 #: model:ir.model.fields,field_description:formio.field_formio_form__create_date
 #: model:ir.model.fields,field_description:formio.field_formio_license__create_date
 #: model:ir.model.fields,field_description:formio.field_formio_res_model__create_date
@@ -1048,6 +1065,12 @@ msgstr "Aangemaakt op"
 #: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_search
 msgid "Current"
 msgstr "Actueel"
+
+#. module: formio
+#: model:ir.model.fields,field_description:formio.field_formio_builder__current_uuid
+#: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_search
+msgid "Current UUID"
+msgstr "Actuele UUID"
 
 #. module: formio
 #: model:ir.model.fields,field_description:formio.field_formio_form__readonly_submission_data
@@ -1133,7 +1156,6 @@ msgstr "Weergave"
 #: model:ir.model.fields,field_description:formio.field_formio_builder_js_options__display_name
 #: model:ir.model.fields,field_description:formio.field_formio_builder_translation__display_name
 #: model:ir.model.fields,field_description:formio.field_formio_default_asset_css__display_name
-#: model:ir.model.fields,field_description:formio.field_formio_extra_asset__display_name
 #: model:ir.model.fields,field_description:formio.field_formio_form__display_name
 #: model:ir.model.fields,field_description:formio.field_formio_license__display_name
 #: model:ir.model.fields,field_description:formio.field_formio_res_model__display_name
@@ -1236,6 +1258,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_form
 msgid "Expire After"
 msgstr "Verloopt na"
+
+#. module: formio
+#: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_form
+msgid "Faaoaoaoa"
+msgstr ""
 
 #. module: formio
 #: model:ir.model.fields,field_description:formio.field_formio_builder__message_follower_ids
@@ -1401,7 +1428,6 @@ msgstr "Forms Licenties"
 #: model:ir.model.fields,field_description:formio.field_ir_actions_server__formio_ref
 #: model:ir.model.fields,field_description:formio.field_ir_attachment__formio_ref
 #: model:ir.model.fields,field_description:formio.field_ir_cron__formio_ref
-#: model:ir.model.fields,field_description:formio.field_product_document__formio_ref
 msgid "Forms Ref"
 msgstr "Forms Ref"
 
@@ -1501,7 +1527,6 @@ msgstr "Uren"
 #: model:ir.model.fields,field_description:formio.field_formio_builder_js_options__id
 #: model:ir.model.fields,field_description:formio.field_formio_builder_translation__id
 #: model:ir.model.fields,field_description:formio.field_formio_default_asset_css__id
-#: model:ir.model.fields,field_description:formio.field_formio_extra_asset__id
 #: model:ir.model.fields,field_description:formio.field_formio_form__id
 #: model:ir.model.fields,field_description:formio.field_formio_license__id
 #: model:ir.model.fields,field_description:formio.field_formio_res_model__id
@@ -1553,7 +1578,6 @@ msgstr "Identificeert een serveractie met gerelateerde Form Builder."
 #. module: formio
 #: model:ir.model.fields,help:formio.field_formio_version_asset__attachment_formio_ref
 #: model:ir.model.fields,help:formio.field_ir_attachment__formio_ref
-#: model:ir.model.fields,help:formio.field_product_document__formio_ref
 msgid "Identifies an attachment with a related Forms/Builder record."
 msgstr "Identificeert een bijlage met een gerelateerd Forms Builder."
 
@@ -1717,7 +1741,6 @@ msgstr "Talen en localisaties"
 #: model:ir.model.fields,field_description:formio.field_formio_builder_js_options__write_uid
 #: model:ir.model.fields,field_description:formio.field_formio_builder_translation__write_uid
 #: model:ir.model.fields,field_description:formio.field_formio_default_asset_css__write_uid
-#: model:ir.model.fields,field_description:formio.field_formio_extra_asset__write_uid
 #: model:ir.model.fields,field_description:formio.field_formio_form__write_uid
 #: model:ir.model.fields,field_description:formio.field_formio_license__write_uid
 #: model:ir.model.fields,field_description:formio.field_formio_res_model__write_uid
@@ -1737,7 +1760,6 @@ msgstr "Laatst bijgewerkt door"
 #: model:ir.model.fields,field_description:formio.field_formio_builder_js_options__write_date
 #: model:ir.model.fields,field_description:formio.field_formio_builder_translation__write_date
 #: model:ir.model.fields,field_description:formio.field_formio_default_asset_css__write_date
-#: model:ir.model.fields,field_description:formio.field_formio_extra_asset__write_date
 #: model:ir.model.fields,field_description:formio.field_formio_form__write_date
 #: model:ir.model.fields,field_description:formio.field_formio_license__write_date
 #: model:ir.model.fields,field_description:formio.field_formio_res_model__write_date
@@ -1852,7 +1874,6 @@ msgstr "Module afhankelijkheid"
 
 #. module: formio
 #: model:ir.model.fields,help:formio.field_ir_attachment__formio_asset_formio_version_id
-#: model:ir.model.fields,help:formio.field_product_document__formio_asset_formio_version_id
 msgid ""
 "Mostly files from the formio.js project - https://github.com/formio/formio.js"
 msgstr ""
@@ -2176,13 +2197,29 @@ msgstr "Openbare toegang type"
 #. module: formio
 #: model:ir.model.fields,field_description:formio.field_formio_builder__public_submission_url_add_query_params_from
 msgid "Public Add Query Params to Submission URL from"
-msgstr "Openbare/website query parameters toevoegen aan indienings (submission) URL "
+msgstr ""
+"Openbare/website query parameters toevoegen aan indienings (submission) URL "
 "van"
 
 #. module: formio
 #: model:ir.model.fields,field_description:formio.field_formio_form__public_create
 msgid "Public Created"
 msgstr "Openbaar ingediend"
+
+#. module: formio
+#: model:ir.model.fields,field_description:formio.field_formio_builder__public_current_url
+msgid "Public Current URL"
+msgstr "Openbare actuele URL"
+
+#. module: formio
+#: model:ir.model.fields,help:formio.field_formio_builder__public_url
+msgid "Public Form for this form builder version"
+msgstr ""
+
+#. module: formio
+#: model:ir.model.fields,help:formio.field_formio_builder__public_current_url
+msgid "Public Form with versioning (same Name) in state Current"
+msgstr "Openbaar formulier met versiebeheer (dezelfde naam) in status Actueel."
 
 #. module: formio
 #: model:ir.model.fields,field_description:formio.field_formio_builder__public_save_draft_done_url
@@ -2207,11 +2244,6 @@ msgid "Public URL"
 msgstr "Openbare URL"
 
 #. module: formio
-#: model:ir.model.fields,field_description:formio.field_formio_builder__public_uuid
-msgid "Public UUID"
-msgstr "Openbare UUID"
-
-#. module: formio
 #: model:ir.model.fields,help:formio.field_formio_builder__public_access_interval_number
 msgid ""
 "Public access to submitted Form shall be rejected after expiration of the "
@@ -2234,15 +2266,6 @@ msgstr "Publiceer op portaal"
 #: model_terms:ir.ui.view,arch_db:formio.view_formio_builder_form
 msgid "Publish to Public"
 msgstr "Publiceer op website"
-
-#. module: formio
-#: model:ir.model.fields,field_description:formio.field_formio_builder__rating_ids
-#: model:ir.model.fields,field_description:formio.field_formio_form__rating_ids
-#: model:ir.model.fields,field_description:formio.field_formio_license__rating_ids
-#: model:ir.model.fields,field_description:formio.field_formio_version__rating_ids
-#: model:ir.model.fields,field_description:formio.field_formio_version_github_tag__rating_ids
-msgid "Ratings"
-msgstr ""
 
 #. module: formio
 #: model:ir.model.fields,field_description:formio.field_formio_form__res_id
@@ -2777,6 +2800,13 @@ msgid "Unlock"
 msgstr "Ontgrendelen"
 
 #. module: formio
+#. odoo-javascript
+#: code:addons/formio/static/src/js/views/formio_builder.xml:0
+#, python-format
+msgid "Unlocked"
+msgstr "Ontgrendeld"
+
+#. module: formio
 #: model:ir.model.fields,field_description:formio.field_formio_version_translation__base_translation_updated
 msgid "Updated Base"
 msgstr "Bijgewerkte basis"
@@ -3088,7 +3118,6 @@ msgstr ""
 
 #. module: formio
 #: model:ir.model.fields,field_description:formio.field_ir_attachment__formio_form_id
-#: model:ir.model.fields,field_description:formio.field_product_document__formio_form_id
 msgid "formio.form"
 msgstr ""
 
@@ -3115,11 +3144,6 @@ msgstr "formio.js CSS assets"
 #. module: formio
 #: model:ir.model,name:formio.model_formio_default_asset_css
 msgid "formio.js Default Asset CSS"
-msgstr ""
-
-#. module: formio
-#: model:ir.model,name:formio.model_formio_extra_asset
-msgid "formio.js Extra Asset"
 msgstr ""
 
 #. module: formio
@@ -3206,7 +3230,6 @@ msgstr "formio.js release/versie"
 #: model:ir.model.fields,field_description:formio.field_formio_version_github_tag__formio_version_id
 #: model:ir.model.fields,field_description:formio.field_formio_version_translation__formio_version_id
 #: model:ir.model.fields,field_description:formio.field_ir_attachment__formio_asset_formio_version_id
-#: model:ir.model.fields,field_description:formio.field_product_document__formio_asset_formio_version_id
 #: model:ir.model.fields,field_description:formio.field_res_config_settings__formio_default_version_id
 #, python-format
 msgid "formio.js version"
@@ -3297,3 +3320,6 @@ msgstr ""
 #, python-format
 msgid "{title} (state: {state}, version: {version})"
 msgstr "{title} [status: {state}, versie: {version}]"
+
+#~ msgid "Public UUID"
+#~ msgstr "Openbare UUID"
