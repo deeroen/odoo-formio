@@ -42,12 +42,12 @@
                                         </li>
                                         <li t-if="builder.state == 'CURRENT'" class="locked">
                                             <t t-if="builder.is_locked">
-                                                <span class="badge rounded-pill text-bg-warning mb-1">
+                                                <span class="badge rounded-pill text-bg-info mb-1">
                                                     <span class="formio_dock_label">Locked</span>
                                                 </span>
                                             </t>
                                             <t t-else="">
-                                                <span class="badge rounded-pill text-bg-info mb-1">
+                                                <span class="badge rounded-pill text-bg-warning mb-1">
                                                     <span class="formio_dock_label">Unlocked</span>
                                                 </span>
                                             </t>
