@@ -39,15 +39,7 @@ class IrHttp(models.AbstractModel):
             if not base_url:
                 raise AccessDenied()
             url = urlparse(base_url)
-            if url.path.startswith('/formio/public/form/new/current'):
-                current_uuid = url.path.split('/')[-1]
-                domain = [('current_uuid', '=', current_uuid), ('public', '=', True)]
-                builder = request.env['formio.builder'].sudo().search(domain)
-                if builder:
-                    return cls._allow_public_formio_storage_filestore(base_url)
-                else:
-                    return False
-            elif url.path.startswith('/formio/public/form/new'):
+            if url.path.startswith('/formio/public/form/new'):
                 uuid = url.path.split('/')[-1]
                 domain = [('uuid', '=', uuid), ('public', '=', True)]
                 builder = request.env['formio.builder'].sudo().search(domain)

@@ -125,14 +125,6 @@ class FormioStorageFilestoreController(http.Controller):
                             msg = 'Forbidden Form /formio/portal/form/%s'
                             _logger.info(msg % uuid)
                             raise Forbidden(_(msg) % uuid)
-                    elif url.path.startswith('/formio/public/form/new/current'):
-                        current_uuid = url.path.split('/')[-1]
-                        domain = [('current_uuid', '=', current_uuid), ('public', '=', True)]
-                        builder = Builder.search(domain)
-                        if not builder:
-                            msg = 'Forbidden Form /formio/public/form/new/current/%s'
-                            _logger.info(msg % current_uuid)
-                            raise Forbidden(_(msg) % current_uuid)
                     elif url.path.startswith('/formio/public/form/new'):
                         uuid = url.path.split('/')[-1]
                         domain = [('uuid', '=', uuid), ('public', '=', True)]
