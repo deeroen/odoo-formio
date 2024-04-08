@@ -111,6 +111,14 @@ class FormioStorageFilestoreController(http.Controller):
                             msg = 'Forbidden Form /formio/form/%s'
                             _logger.info(msg % uuid)
                             raise Forbidden(_(msg) % uuid)
+                    elif url.path.startswith('/formio/portal/form/new'):
+                        builder_name = url.path.split('/')[-1]
+                        domain = [('name', '=', builder_name), ('portal', '=', True)]
+                        builder = Builder.search(domain)
+                        if not builder:
+                            msg = 'Forbidden Form /formio/portal/form/new/%s'
+                            _logger.info(msg % uuid)
+                            raise Forbidden(_(msg) % uuid)
                     elif url.path.startswith('/formio/portal/form') and not is_user_public:
                         uuid = url.path.split('/')[-1]
                         if not Form.get_form(uuid, 'read'):
@@ -129,7 +137,7 @@ class FormioStorageFilestoreController(http.Controller):
                         uuid = url.path.split('/')[-1]
                         domain = [('uuid', '=', uuid), ('public', '=', True)]
                         builder = Builder.search(domain)
-                        if not builder or not builder.public:
+                        if not builder:
                             msg = 'Forbidden Form /formio/public/form/new/%s'
                             _logger.info(msg % uuid)
                             raise Forbidden(_(msg) % uuid)
@@ -137,7 +145,7 @@ class FormioStorageFilestoreController(http.Controller):
                         uuid = url.path.split('/')[-1]
                         domain = [('uuid', '=', uuid), ('public', '=', True)]
                         form = Form.search(domain)
-                        if not form or not form:
+                        if not form:
                             msg = 'Forbidden Form /formio/public/form/%s'
                             _logger.info(msg % uuid)
                             raise Forbidden(_(msg) % uuid)
