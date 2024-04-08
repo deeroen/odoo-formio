@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.0.2.1.1
+
+Fixed (multi) file upload retrieval for backend, portal and public forms (request context/env).\
+This applies to `GET /formio/storage/filestore` requests immediately after the upload, e.g. to preview images, that resulted in HTTP 403 Forbidden errors.\
+This required to fixing and improving the URL/route authentication checks.\
+Also done another security audit, so uploaded files cannot be retrieved without proper access/permission.
+
 ## 16.0.2.1
 
 Improve public user check, by checking either:
