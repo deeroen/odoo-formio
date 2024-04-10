@@ -159,3 +159,6 @@ class FormioStorageFilestoreController(http.Controller):
                 # return stream.get_response()
                 response = http.send_file(data, filename=attachment['name'], as_attachment=True)
                 return response
+        else:
+            _logger.warning('File not found or something went wrong')
+            return request.not_found(file_name)

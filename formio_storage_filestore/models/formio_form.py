@@ -46,21 +46,19 @@ class Form(models.Model):
                         attach_names += self._get_component_file_names(component_in_row)
             else:
                 attach_names += self._get_component_file_names(component)
-
         # update ir.attachment (link with formio.form)
         if attach_names:
             domain = [
                 ('name', 'in', attach_names),
                 ('formio_storage_filestore_user_id', '!=', False)
             ]
-            attachments = self.env['ir.attachment'].search(domain)
+            attachments = self.env['ir.attachment'].sudo().search(domain)
             for attach in attachments:
                 vals = {
                     'res_model': 'formio.form',
                     'res_id': self.id,
                 }
                 attach.write(vals)
-
         # delete ir.attachment (deleted files)
         if mode == 'write':
             domain = [
@@ -70,9 +68,9 @@ class Form(models.Model):
             ]
             if attach_names:
                 domain.append(('name', 'not in', attach_names))
-            self.env['ir.attachment'].search(domain).\
-                with_context(formio_storage_filestore_force_unlink_attachment=True).\
-                unlink()
+            self.env['ir.attachment'].sudo().search(domain).with_context(
+                formio_storage_filestore_force_unlink_attachment=True
+            ).unlink()
 
     def _get_component_file_names(self, component_obj):
         names = []
