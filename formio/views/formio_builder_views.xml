@@ -405,7 +405,10 @@ See LICENSE file for full licensing details. -->
                                    options="{'mode': 'js'}"/>
                         </page>
                         <page string="JSON Schema" name="schema" groups="formio.group_formio_admin">
-                            <field name="schema" readonly="is_locked == True"/>
+                            <field name="schema"
+                                   readonly="is_locked == True"
+                                   widget="ace"
+                                   options="{'mode': 'js'}"/>
                         </page>
                     </notebook>
                 </sheet>
