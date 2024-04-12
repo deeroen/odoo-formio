@@ -1,5 +1,14 @@
 # Changelog
 
+## 16.0.12.0.0
+
+Improvements and migration for the `formio.builder.js.options`:
+- Add `editForm` components and options in `formio_builder_js_options_default`.
+- Change `formio_builder_js_options_default` storage from Python Dict to JSON notation/syntax.
+- Migrate `formio.builder` records (field) `formio_js_options` to merge the updated `formio_builder_js_options_default`.
+- Migrate `formio.builder.js.options.default` records to merge the updated `formio_builder_js_options_default`.
+- Improve the "Form Builder formio.js Options" form view (`view_formio_builder_js_options_form`): Add `widget='ace'` (`mode: js`).
+
 ## 16.0.11.0.0
 
 Form Builder view improvements:
