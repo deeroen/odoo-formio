@@ -382,7 +382,10 @@ See LICENSE file for full licensing details. -->
                                 </group>
                             </div>
 
-                            <field name="formio_js_options" placeholder="{ ... }" attrs="{'readonly': [('is_locked', '=', True)]}"/>
+                            <field name="formio_js_options"
+                                   placeholder="{ ... }"
+                                   attrs="{'readonly': [('is_locked', '=', True)]}"
+                                   widget="ace"/>
                         </page>
                         <page string="JSON Schema" name="schema" groups="formio.group_formio_admin">
                             <field name="schema" attrs="{'readonly': [('is_locked', '=', True)]}"/>
