@@ -435,7 +435,8 @@ export class OdooFormioForm extends Component {
                 else {
                     next();
                 }
-            }
+            },
+            ...self['options']['hooks']
         };
         Formio.createForm(document.getElementById('formio_form'), self.schema, self.options).then(function(form) {
             let buttons = document.querySelectorAll('.formio_languages button');
