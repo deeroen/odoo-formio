@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.0.1.1.0
+
+Improve the data for `formio.builder.js.options`:\
+Record xmlid: `formio.formio_builder_js_options_storage_filestore`
+
 ## 17.0.1.0.0
 
 Fixed (multi) file upload retrieval for backend, portal and public forms (request context/env).\

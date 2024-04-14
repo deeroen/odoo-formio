@@ -1,11 +1,12 @@
 # Copyright Nova Code (https://www.novacode.nl)
 # See LICENSE file for full licensing details.
 
-import ast
 import json
 import logging
 
 from odoo import api, SUPERUSER_ID
+
+from odoo.addons.formio.utils import json_loads
 
 _logger = logging.getLogger(__name__)
 
@@ -18,32 +19,24 @@ def migrate(cr, version):
     # 1. formio.builder.js.options
     # Merge options, but keep existing options.
     for js_options in env['formio.builder.js.options'].search([]):
-        try:
-            options_dict = json.loads(js_options.value)
-        except Exception:
-            options_dict = ast.literal_eval(js_options.value)
-        # Keep options_dict['editForm'] and add options_default_dict['editForm']
-        write_options_dict = {
-            **options_dict['editForm'],
-            **options_default_dict['editForm']
-        }
-        value = json.dumps({'editForm': write_options_dict}, indent=4)
+        options_dict = json_loads(js_options.value)
+        # Keep options_dict and add options_default_dict
+        write_options_dict = env[
+            'formio.builder.js.options.merge'
+        ]._recursive_merge_js_options(options_default_dict, options_dict)
+        value = json.dumps(write_options_dict, indent=4)
         js_options.write({'value': value})
 
     # 2. formio.builder
     # Merge options, but keep existing options.
     domain = [('formio_js_options', '!=', False)]
     for builder in env['formio.builder'].search(domain):
-        try:
-            options_dict = json.loads(builder.formio_js_options)
-        except Exception:
-            options_dict = ast.literal_eval(builder.formio_js_options)
-        # Keep options_dict['editForm'] and add options_default_dict['editForm']
-        write_options_dict = {
-            **options_dict['editForm'],
-            **options_default_dict['editForm']
-        }
-        formio_js_options = json.dumps({'editForm': write_options_dict}, indent=4)
+        options_dict = json_loads(builder.formio_js_options)
+        # Keep options_dict and add options_default_dict
+        write_options_dict = env[
+            'formio.builder.js.options.merge'
+        ]._recursive_merge_js_options(options_default_dict, options_dict)
+        formio_js_options = json.dumps(write_options_dict, indent=4)
         builder.write({'formio_js_options': formio_js_options})
 
     # 3. formio.builder

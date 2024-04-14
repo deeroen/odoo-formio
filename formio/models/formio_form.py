@@ -1,7 +1,6 @@
 # Copyright Nova Code (http://www.novacode.nl)
 # See LICENSE file for full licensing details.
 
-import ast
 import json
 import logging
 import uuid
@@ -12,7 +11,7 @@ from odoo import api, fields, models, _
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.exceptions import AccessError, UserError
 
-from ..utils import get_field_selection_label
+from ..utils import get_field_selection_label, json_loads
 
 from .formio_builder import (
     STATE_DRAFT as BUILDER_STATE_DRAFT,
@@ -363,16 +362,10 @@ class Form(models.Model):
     def _decode_data(self, data):
         """ Convert data (str) to dictionary
 
-        json.loads(data) refuses identifies with single quotes.Use
-        ast.literal_eval() instead.
-
         :param str data: submission_data string
         :return str data: submission_data as dictionary
         """
-        try:
-            data = json.loads(data)
-        except:
-            data = ast.literal_eval(data)
+        data = json_loads(data)
         return data
 
     def after_submit(self):
