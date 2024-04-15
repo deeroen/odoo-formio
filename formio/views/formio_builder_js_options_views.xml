@@ -21,7 +21,7 @@ See LICENSE file for full licensing details. -->
 	    <form string="Form Builder formio.js Options">
                 <header>
                     <button
-                        name="%(action_open_merge_tool)d" type="action" string="Merge formio.js Options"
+                        name="%(action_open_merge_wizard)d" type="action" string="Merge formio.js Options"
                         context="{'default_formio_js_options_current_id': id}"/>
                 </header>
                 <sheet>
