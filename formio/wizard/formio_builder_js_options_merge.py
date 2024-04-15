@@ -24,6 +24,7 @@ class BuilderJsOptionsMerge(models.TransientModel):
     formio_js_options_merge_id = fields.Many2one(
         comodel_name='formio.builder.js.options',
         string='Merge Options Record',
+        default=lambda self: self._default_js_options_merge_id(),
         domain="[('id', '!=', formio_js_options_current_id)]",
         required=True
     )
@@ -35,6 +36,19 @@ class BuilderJsOptionsMerge(models.TransientModel):
         string='formio.js JS Options Preview',
         compute='_compute_js_options_merge_preview'
     )
+
+    def _default_js_options_merge_id(self):
+        Param = self.env['ir.config_parameter'].sudo()
+        default_builder_js_options_id = Param.get_param(
+            'formio.default_builder_js_options_id'
+        )
+        options = self.env['formio.builder.js.options'].browse(
+            int(default_builder_js_options_id)
+        )
+        if options:
+            return options.id
+        else:
+            return False
 
     def action_merge(self):
         self.ensure_one()
