@@ -4,7 +4,7 @@
 {
     'name': 'Forms',
     'summary': 'Form Builder for internal, portal, website and embedded forms, to collect any information you need for your business.',
-    'version': '16.0.12.0.0',
+    'version': '16.0.12.1.0',
     'license': 'LGPL-3',
     'author': 'Nova Code',
     'website': 'https://www.novacode.nl',
@@ -42,6 +42,8 @@
         'security/formio_security.xml',
         'security/ir_model_access.xml',
         'security/ir_rule.xml',
+        # wizards (before views)
+        'wizard/formio_builder_js_options_merge.xml',
         # views
         'views/formio_builder_js_options_views.xml',
         'views/formio_builder_translation_views.xml',
@@ -65,7 +67,7 @@
         'views/formio_form_templates.xml',
         'views/formio_portal_templates.xml',
         'views/formio_public_templates.xml',
-        # wizards
+        # wizards (after views)
         'wizard/formio_version_github_checker_wizard.xml',
     ],
     'assets': {

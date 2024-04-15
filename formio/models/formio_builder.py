@@ -1,7 +1,6 @@
 # Copyright Nova Code (http://www.novacode.nl)
 # See LICENSE file for full licensing details.
 
-import ast
 import json
 import re
 import uuid
@@ -10,7 +9,7 @@ from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 from odoo.http import request
 
-from ..utils import get_field_selection_label
+from ..utils import get_field_selection_label, json_loads
 
 STATE_DRAFT = 'DRAFT'
 STATE_CURRENT = 'CURRENT'
@@ -308,16 +307,10 @@ class Builder(models.Model):
     def _decode_schema(self, schema):
         """ Convert schema (str) to dictionary
 
-        json.loads(data) refuses identifies with single quotes.Use
-        ast.literal_eval() instead.
-
         :param str schema: schema string
         :return str schema: schema as dictionary
         """
-        try:
-            schema = json.loads(schema)
-        except Exception:
-            schema = ast.literal_eval(schema)
+        schema = json_loads(schema)
         return schema
 
     def _search_display_name_full(self, operator, value):
@@ -534,10 +527,7 @@ class Builder(models.Model):
         """ formio.js (API) options """
 
         if self.formio_js_options:
-            try:
-                options = json.loads(self.formio_js_options)
-            except Exception:
-                options = ast.literal_eval(self.formio_js_options)
+            options = json_loads(self.formio_js_options)
         else:
             options = {}
 

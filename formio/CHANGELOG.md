@@ -1,5 +1,14 @@
 # Changelog
 
+## 16.0.12.1.0
+
+Improvements for the `formio.builder.js.options`:
+- Add a wizard to merge other `formio.builder.js.options` record field `value`.
+- Add default and tracking for `formio.builder.js.options` field `value`.
+
+Add a utils function `json_loads()`:\
+Refactored the `try/except` with `json.loads()` and `ast.literal_eval()` calls, to use the utils `json_loads()` function.
+
 ## 16.0.12.0.0
 
 Improvements and migration for the `formio.builder.js.options`:
