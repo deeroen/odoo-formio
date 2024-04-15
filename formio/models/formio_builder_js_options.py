@@ -1,7 +1,8 @@
 # Copyright Nova Code (http://www.novacode.nl)
 # See LICENSE file for full licensing details.
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class BuilderJsOptions(models.Model):
@@ -16,6 +17,15 @@ class BuilderJsOptions(models.Model):
         default=lambda self: self._default_options_value(),
         tracking=True
     )
+
+    @api.constrains('value')
+    def _constraint_value(self):
+        for rec in self:
+            if not rec.value:
+                msg = _(
+                    'Value is required and must contain at least empty JSON: {}'
+                )
+                raise ValidationError(msg)
 
     @api.model
     def _default_options_value(self):
