@@ -1,6 +1,10 @@
-.o_form_view .o_form_sheet#formio_builder_container {
+.o_form_sheet_bg {
     max-width: none !important;
-    width: 95% !important;
+}
+
+.o-form-buttonbox .oe_stat_button.formio_builder .o_stat_info,
+.o-form-buttonbox .oe_stat_button.formio_builder .o_button_icon.fa-rocket {
+    color: $o-white;
 }
 
 #formio_builder_container .formio_builder_dock {

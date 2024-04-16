@@ -157,15 +157,22 @@ See LICENSE file for full licensing details. -->
                     <button
                         name="action_cancel" type="object" string="Cancel"
                         attrs="{'invisible': ['|', ('state', 'in', ['CANCEL']), ('allow_force_update_state', '=', False)]}"/>
-                    <button 
-                        name="action_copy_to_current" type="object" string="Copy To Current" 
+                    <button
+                        name="action_copy_to_current" type="object" string="Copy To Current"
                         attrs="{'invisible': ['|', ('allow_copy', '=', False), ('copy_to_current', '=', False)]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="PENDING,DRAFT,COMPLETE,CANCEL"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="action_view_formio" type="object" string="Form"
-                                class="oe_stat_button" icon="fa-rocket" aria-label="Form"/>
+                        <button name="action_view_formio"
+                                type="object"
+                                class="oe_stat_button bg-primary formio_form"
+                                icon="fa-rocket"
+                                aria-label="Form">
+                            <div class="o_stat_info o_field_widget">
+                                <span>Form</span>
+                            </div>
+                        </button>
                         <button name="action_open_res_act_window" type="object"
                                 attrs="{'invisible': ['|', ('res_id', '=', False), ('res_id', '=', 0)]}"
                                 class="oe_stat_button" icon="fa-link" aria-label="Resource">
@@ -287,7 +294,7 @@ See LICENSE file for full licensing details. -->
             </search>
         </field>
     </record>
-    
+
     <!-- actions -->
     <record id="action_formio_form" model="ir.actions.act_window">
         <field name="name">Form Submissions</field>

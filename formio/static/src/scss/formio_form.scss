@@ -4,6 +4,11 @@
 /*     width: 80% !important; */
 /* } */
 
+.o-form-buttonbox .oe_stat_button.formio_form .o_stat_info,
+.o-form-buttonbox .oe_stat_button.formio_form .o_button_icon.fa-rocket {
+    color: $o-white;
+}
+
 .formio_form_iframe_container iframe{
     width: 1px;
     min-width: 100%;
