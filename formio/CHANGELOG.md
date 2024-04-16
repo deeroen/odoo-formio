@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.0.12.3.0
+
+Add descriptions with recommended modules in the `formio.builder.js.options` data.
+
 ## 16.0.12.2.0
 
 Improve the Form Builder and Form button styling (colors).

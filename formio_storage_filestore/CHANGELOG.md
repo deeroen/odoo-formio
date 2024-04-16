@@ -1,5 +1,10 @@
 # Changelog
 
+## 16.0.2.3.0
+
+Add description with recommended module in the `formio.builder.js.options` data.\
+So it is not overwritten by merging `formio.builder.js.options` records.
+
 ## 16.0.2.2.1
 
 Fix Access Denied for portal users upon form submit, which has file(s) linked/uploaded.
