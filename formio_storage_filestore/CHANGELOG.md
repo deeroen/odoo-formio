@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.0.1.2.0
+
+Add description with recommended module in the `formio.builder.js.options` data.\
+So it is not overwritten by merging `formio.builder.js.options` records.
+
 ## 17.0.1.1.0
 
 Improve the data for `formio.builder.js.options`:\
