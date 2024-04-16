@@ -4,7 +4,7 @@
 {
     'name': 'Forms',
     'summary': 'Form Builder for internal, portal, website and embedded forms, to collect any information you need for your business.',
-    'version': '17.0.3.1.0',
+    'version': '17.0.3.2.0',
     'license': 'LGPL-3',
     'author': 'Nova Code',
     'website': 'https://www.novaforms.app',
@@ -72,11 +72,11 @@
     'assets': {
         'web.assets_backend': [
             # builder
-            'formio/static/src/css/formio_builder.css',
+            'formio/static/src/scss/formio_builder.scss',
             'formio/static/src/js/views/formio_builder.xml',
             'formio/static/src/js/views/formio_builder.js',
             # form
-            'formio/static/src/css/formio_form.css',
+            'formio/static/src/scss/formio_form.scss',
             'formio/static/src/js/views/formio_form.xml',
             'formio/static/src/js/views/formio_form.js',
             # misc

@@ -157,7 +157,7 @@ See LICENSE file for full licensing details. -->
                     <button
                         name="action_cancel" type="object" string="Cancel"
                         invisible="state == 'CANCEL' or allow_force_update_state == False"/>
-                    <button 
+                    <button
                         name="action_copy_to_current" type="object" string="Copy To Current"
                         invisible="allow_copy == False or copy_to_current == False"/>
                     <field name="state" widget="statusbar" statusbar_visible="PENDING,DRAFT,COMPLETE,CANCEL"/>
@@ -168,7 +168,7 @@ See LICENSE file for full licensing details. -->
                                 type="object"
                                 string="Form"
                                 aria-label="Form"
-                                class="oe_stat_button bg-secondary"
+                                class="oe_stat_button bg-primary formio_form"
                                 icon="fa-rocket">
                             <div class="o_stat_info o_field_widget">
                                 <span>Form</span>
@@ -308,7 +308,7 @@ See LICENSE file for full licensing details. -->
             </search>
         </field>
     </record>
-    
+
     <!-- actions -->
     <record id="action_formio_form" model="ir.actions.act_window">
         <field name="name">Form Submissions</field>

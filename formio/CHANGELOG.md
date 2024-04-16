@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.0.3.2.0
+
+Improve the Form Builder and Form button styling (colors).
+
 ## 17.0.3.1.0
 
 Improvements for the `formio.builder.js.options`:

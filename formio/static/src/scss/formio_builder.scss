@@ -2,6 +2,11 @@
     max-width: none !important;
 }
 
+.o-form-buttonbox .oe_stat_button.formio_builder .o_stat_info,
+.o-form-buttonbox .oe_stat_button.formio_builder .o_button_icon.fa-rocket {
+    color: $o-white;
+}
+
 #formio_builder_container .formio_builder_dock {
     float: right;
     margin-bottom: 1rem;
