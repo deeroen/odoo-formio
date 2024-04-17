@@ -122,6 +122,7 @@ class Form(models.Model):
         "iFrame Resizer bodyMargin",
         related="builder_id.iframe_resizer_body_margin",
     )
+    full_width = fields.Boolean(related='builder_id.full_width')
     languages = fields.One2many('res.lang', related='builder_id.languages', string='Languages')
     allow_unlink = fields.Boolean("Allow delete", compute='_compute_access')
     allow_force_update_state = fields.Boolean("Allow force update State", compute='_compute_access')

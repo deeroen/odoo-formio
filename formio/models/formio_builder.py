@@ -200,6 +200,7 @@ class Builder(models.Model):
     show_form_state = fields.Boolean("Show Form State", tracking=True, help="Show the state in the Form header.", default=True)
     show_form_user_metadata = fields.Boolean(
         "Show User Metadata", tracking=True, help="Show submission and assigned user metadata in the Form header.", default=True)
+    full_width = fields.Boolean(default=False)
     iframe_resizer_body_margin = fields.Char(
         "iFrame Resizer bodyMargin", tracking=True,
         help="""\

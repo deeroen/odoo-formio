@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.0.3.4.0
+
+- Add Form Builder setting (boolean field) to display a Form in "full width" 100% or 75%.
+- Changed the default width of a Form to 75%.
+
 ## 17.0.3.3.0
 
 Add descriptions with recommended modules in the `formio.builder.js.options` data.
