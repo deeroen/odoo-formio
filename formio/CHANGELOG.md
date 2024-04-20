@@ -1,5 +1,12 @@
 # Changelog
 
+## 17.0.4.0.0
+
+Technical/API change for the `formio.form` methods `_after_create` and `_after_write`:
+- Removed the `vals` argument because the respective caller methods `create` and `write` raised a Singleton Error upon `copy`.\
+  This also simplifies the `create` and `write` methods.
+- Call the `_process_api_components` method per record iteration.
+
 ## 17.0.3.4.0
 
 - Add Form Builder setting (boolean field) to display a Form in "full width" 100% or 75%.
