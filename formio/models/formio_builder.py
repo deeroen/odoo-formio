@@ -213,15 +213,6 @@ class Builder(models.Model):
     wizard = fields.Boolean("Wizard", tracking=True)
     wizard_on_next_page_save_draft = fields.Boolean("Wizard on Next Page Save Draft", tracking=True)
     wizard_on_change_page_save_draft = fields.Boolean("Wizard on Change Page Save Draft", tracking=True)
-    # submission_url_add_query_params_from = fields.Selection(
-    #     string="Add Query Params to Submission URL from",
-    #     selection=[
-    #         ("window", "Window iframe (src)"),
-    #         ("window.parent", "Window parent (URL)"),
-    #     ],
-    #     tracking=True,
-    #     help="Enables adding the URL query params from the window's iframe (src) or window.parent to the form submission URL endpoint.",
-    # )
     backend_submission_url_add_query_params_from = fields.Selection(
         string="Backend Add Query Params to Submission URL from",
         selection=[
