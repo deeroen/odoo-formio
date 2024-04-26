@@ -3,7 +3,7 @@
 
 {
     'name': 'Forms',
-    'summary': 'Form Builder for internal, portal, website and embedded forms, to collect any information you need for your business.',
+    'summary': 'Form Builder for backend, portal, website and embedded forms, to collect any information you need for your business.',
     'version': '17.0.4.0.0',
     'license': 'LGPL-3',
     'author': 'Nova Code',
@@ -96,6 +96,6 @@
         'data/formio_demo_data.xml',
     ],
     'images': [
-        'static/description/banner.png',
+        'static/description/banner.gif',
     ]
 }
