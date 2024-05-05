@@ -11,7 +11,12 @@ from ..models.formio_form import (
     STATE_DRAFT as FORM_STATE_DRAFT,
     STATE_COMPLETE as FORM_STATE_COMPLETE,
 )
-from .utils import generate_uuid4, log_form_submisssion, validate_csrf
+from .utils import (
+    generate_uuid4,
+    log_form_submisssion,
+    update_dict_allowed_keys,
+    validate_csrf,
+)
 
 _logger = logging.getLogger(__name__)
 
@@ -53,7 +58,7 @@ class FormioController(http.Controller):
         return request.render('formio.formio_builder_embed', values)
 
     @http.route('/formio/builder/<int:builder_id>/config', type='http', auth='user', methods=['POST'], csrf=False, website=True)
-    def builder_config(self, builder_id):
+    def builder_config(self, builder_id, **kwargs):
         if not request.env.user.has_group('formio.group_formio_admin'):
             return
         builder = request.env['formio.builder'].browse(builder_id)
@@ -204,10 +209,22 @@ class FormioController(http.Controller):
         return form.builder_id._get_form_js_locales()
 
     def _get_form_js_params(self, form):
-        return form._get_js_params()
+        params = form._get_js_params()
+        args = request.httprequest.args
+        args_dict = args.to_dict()
+        if bool(args_dict):
+            params = update_dict_allowed_keys(
+                params,
+                args_dict,
+                self._allowed_form_js_params_from_url(form.builder_id),
+            )
+        return params
 
     def _get_form(self, uuid, mode):
         return request.env['formio.form'].get_form(uuid, mode)
+
+    def _allowed_form_js_params_from_url(self, builder):
+        return builder._allowed_form_js_params_from_url()
 
     def validate_csrf(self):
         validate_csrf(request)

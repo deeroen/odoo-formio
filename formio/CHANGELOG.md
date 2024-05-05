@@ -1,5 +1,20 @@
 # Changelog
 
+## 17.0.4.0.2
+
+New feature to allow specific Form URL (query string) params from the form it's iframe src.\
+This is currently usable for the Scroll Into View feature.\
+We can provide the param `scroll_into_view_selector`, eg to scroll (up) in an embedded wizard form when navigating pages.
+
+Example:
+```
+<t t-call="formio.form_iframe">
+   <t t-set="formio_builder" t-value="formio_builder_object"/>
+   <t t-set="src" t-value="'/formio/portal/form/' + str(form.uuid)"/>
+   <t t-set="params" t-value="'scroll_into_view_selector=.progress-wizard'"/>
+</t>
+```
+
 ## 17.0.4.0.1
 
 In the Form Builder form view, add (alert) info if the schema is empty.\

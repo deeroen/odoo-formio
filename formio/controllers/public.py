@@ -12,8 +12,12 @@ from ..models.formio_form import (
     STATE_DRAFT as FORM_STATE_DRAFT,
     STATE_COMPLETE as FORM_STATE_COMPLETE,
 )
-
-from .utils import generate_uuid4, log_form_submisssion, validate_csrf
+from .utils import (
+    generate_uuid4,
+    log_form_submisssion,
+    update_dict_allowed_keys,
+    validate_csrf,
+)
 
 _logger = logging.getLogger(__name__)
 
@@ -46,7 +50,7 @@ class FormioPublicController(http.Controller):
             return request.render('formio.formio_form_public_embed', values)
 
     @http.route('/formio/public/form/<string:form_uuid>/config', type='http', auth='public', csrf=False, website=True)
-    def form_config(self, form_uuid):
+    def form_config(self, form_uuid, **kwargs):
         form = self._get_public_form(form_uuid, self._check_public_form())
         res = {'schema': {}, 'options': {}, 'params': {}}
         args = request.httprequest.args
@@ -306,7 +310,14 @@ class FormioPublicController(http.Controller):
         return builder._get_form_js_locales()
 
     def _get_public_form_js_params(self, builder):
-        return builder._get_public_form_js_params()
+        params = builder._get_public_form_js_params()
+        args = request.httprequest.args
+        args_dict = args.to_dict()
+        if bool(args_dict):
+            params = update_dict_allowed_keys(
+                params, args_dict, self._allowed_form_js_params_from_url(builder)
+            )
+        return params
 
     def _get_public_form(self, form_uuid, public_share=False):
         return request.env['formio.form'].get_public_form(form_uuid, public_share)
@@ -319,6 +330,9 @@ class FormioPublicController(http.Controller):
 
     def _check_public_form(self):
         return request.env.uid == request.env.ref('base.public_user').id or request.env.uid
+
+    def _allowed_form_js_params_from_url(self, builder):
+        return builder._allowed_form_js_params_from_url()
 
     def _get_form(self, uuid, mode):
         return request.env['formio.form'].get_form(uuid, mode)
