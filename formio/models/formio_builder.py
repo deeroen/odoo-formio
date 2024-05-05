@@ -68,6 +68,7 @@ class Builder(models.Model):
         ondelete='restrict', tracking=True,
         help="Model as resource this form represents or acts on")
     schema = fields.Text("JSON Schema")
+    is_schema_empty = fields.Boolean(default=True, compute='_compute_is_schema_empty')
     edit_url = fields.Char(compute='_compute_edit_url', readonly=True)
     act_window_url = fields.Char(compute='_compute_act_window_url', readonly=True)
     state = fields.Selection(
@@ -390,6 +391,11 @@ class Builder(models.Model):
             else:
                 r.display_name_full = _("{title} (state: {state}, version: {version})").format(
                     title=r.title, state=r.display_state, version=r.version)
+
+    @api.depends('schema')
+    def _compute_is_schema_empty(self):
+        for r in self:
+            r.is_schema_empty = not r.schema
 
     @api.depends('public')
     def _compute_public_url(self):

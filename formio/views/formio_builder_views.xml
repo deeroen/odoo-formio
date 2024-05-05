@@ -76,7 +76,6 @@ See LICENSE file for full licensing details. -->
                         name="action_new_builder_version" type="object" string="Create New Version"
                         invisible="id == False"
                         confirm="Are you sure? This creates a new (draft) version."/>
-                    <field name="state" widget="statusbar"/>
                     <button
                         name="action_lock" type="object" string="Lock"
                         invisible="is_locked == True or id == False or state != 'CURRENT'"
@@ -87,6 +86,7 @@ See LICENSE file for full licensing details. -->
                         invisible="is_locked == False or id == False or state != 'CURRENT'"
                         confirm="Are you sure? Modifying the Form Builder could cause existing forms to be invalid."
                         class="btn-primary"/>
+                    <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -116,6 +116,9 @@ See LICENSE file for full licensing details. -->
                         </h1>
                     </div>
                     <group>
+                        <div colspan="2" class="alert alert-info pt-2 pb-2" role="alert" invisible="id == False or is_schema_empty == False">
+                            <i class="fa fa-info-circle" title="info"/> Start building a form by clicking the button [ <i class="fa fa-rocket"/> Form Builder ]
+                        </div>
                         <group>
                             <field name="name"
                                    placeholder="Use ASCII letters, digits (0-9), - or _"
@@ -123,6 +126,7 @@ See LICENSE file for full licensing details. -->
                             <field name="version"/>
                             <field name="version_comment" required="version > 1"/>
                             <field name="parent_id" string="Parent Version"/>
+                            <field name="is_schema_empty" invisible="True"/>
                         </group>
                         <group>
                             <field name="uuid" invisible="id == False"/>
