@@ -572,6 +572,11 @@ class Builder(models.Model):
         }
         return params
 
+    def _allowed_form_js_params_from_url(self):
+        """ Allowed Form URL (querystring) params from the form it's
+        iframe src."""
+        return ['scroll_into_view_selector']
+
     @api.model
     def get_builder_uuid(self, uuid):
         """ Get builder by uuid or False. """

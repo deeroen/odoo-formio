@@ -41,6 +41,13 @@ def log_form_submisssion(form, debug_mode=True):
         )
 
 
+def update_dict_allowed_keys(dict_to_update, dict_updates, allowed_keys=[]):
+    for k, v in dict_updates.items():
+        if k in allowed_keys:
+            dict_to_update[k] = v
+    return dict_to_update
+
+
 def validate_csrf(request):
     post = request.get_json_data()
     token = post.pop('csrf_token', None)

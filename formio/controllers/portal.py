@@ -13,7 +13,12 @@ from ..models.formio_form import (
     STATE_DRAFT as FORM_STATE_DRAFT,
     STATE_COMPLETE as FORM_STATE_COMPLETE,
 )
-from .utils import generate_uuid4, log_form_submisssion, validate_csrf
+from .utils import (
+    generate_uuid4,
+    log_form_submisssion,
+    update_dict_allowed_keys,
+    validate_csrf,
+)
 
 _logger = logging.getLogger(__name__)
 
@@ -268,7 +273,7 @@ class FormioCustomerPortal(CustomerPortal):
     #####################
 
     @http.route('/formio/portal/form/new/<string:builder_uuid>/config', type='http', auth='user', csrf=False, website=True)
-    def form_new_config(self, builder_uuid):
+    def form_new_config(self, builder_uuid, **kwargs):
         builder = self._get_builder_uuid(builder_uuid)
         res = {'schema': {}, 'options': {}, 'params': {}}
 
@@ -388,7 +393,17 @@ class FormioCustomerPortal(CustomerPortal):
         return builder._get_form_js_locales()
 
     def _get_form_js_params(self, builder):
-        return builder._get_portal_form_js_params()
+        params = builder._get_portal_form_js_params()
+        args = request.httprequest.args
+        args_dict = args.to_dict()
+        if bool(args_dict):
+            params = update_dict_allowed_keys(
+                params, args_dict, self._allowed_form_js_params_from_url(builder)
+            )
+        return params
+
+    def _allowed_form_js_params_from_url(self, builder):
+        return builder._allowed_form_js_params_from_url()
 
     def validate_csrf(self):
         validate_csrf(request)

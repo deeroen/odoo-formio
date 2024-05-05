@@ -4,7 +4,7 @@
 {
     'name': 'Forms',
     'summary': 'Form Builder for internal, portal, website and embedded forms, to collect any information you need for your business.',
-    'version': '16.0.13.0.1',
+    'version': '16.0.13.0.2',
     'license': 'LGPL-3',
     'author': 'Nova Code',
     'website': 'https://www.novacode.nl',
