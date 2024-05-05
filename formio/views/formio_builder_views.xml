@@ -75,7 +75,6 @@ See LICENSE file for full licensing details. -->
                         name="action_new_builder_version" type="object" string="Create New Version"
                         attrs="{'invisible':[('id','=',False)]}"
                         confirm="Are you sure? This creates a new (draft) version."/>
-                    <field name="state" widget="statusbar"/>
                     <button
                         name="action_lock" type="object" string="Lock"
                         attrs="{'invisible':['|', ('is_locked','=',True), '|', ('id','=',False), ('state','!=','CURRENT')]}"
@@ -86,6 +85,7 @@ See LICENSE file for full licensing details. -->
                         attrs="{'invisible':['|', ('is_locked','=',False), '|', ('id','=',False), ('state','!=','CURRENT')]}"
                         confirm="Are you sure? Modifying the Form Builder could cause existing forms to be invalid."
                         class="btn-primary"/>
+                    <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -114,11 +114,15 @@ See LICENSE file for full licensing details. -->
                         </h1>
                     </div>
                     <group>
+                        <div colspan="2" class="alert alert-info pt-2 pb-2" role="alert" attrs="{'invisible': ['|', ('id', '=', False), ('is_schema_empty', '=', False)]}">
+                            <i class="fa fa-info-circle" title="info"/> Start building a form by clicking the button [ <i class="fa fa-rocket"/> Form Builder ]
+                        </div>
                         <group>
                             <field name="name" placeholder="Use ASCII letters, digits (0-9), - or _" attrs="{'readonly': [('is_locked', '=', True)]}"/>
                             <field name="version"/>
                             <field name="version_comment" attrs="{'required': [('version', '>', 1)]}"/>
                             <field name="parent_id" string="Parent Version"/>
+                            <field name="is_schema_empty" invisible="1"/>
                         </group>
                         <group>
                             <field name="uuid" attrs="{'invisible': [('id', '=', False)]}"/>

@@ -1,5 +1,10 @@
 # Changelog
 
+## 16.0.13.0.1
+
+In the Form Builder form view, add (alert) info if the schema is empty.\
+The (alert) info text: Start building a form by clicking the button (fa-rocket) Form Builder
+
 ## 16.0.13.0.0
 
 Technical/API change for the `formio.form` methods `_after_create` and `_after_write`:
