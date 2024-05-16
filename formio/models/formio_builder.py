@@ -100,7 +100,7 @@ class Builder(models.Model):
     forms_count = fields.Integer(string='Forms Count', compute='_compute_forms_count')
     backend_use_draft = fields.Boolean(
         string='Use Draft in Backend',
-        default=False,
+        default=True,
         help='Allows to use this Form Builder in state Draft, when adding/choosing a new Form in the backend.'
     )
     backend_use_obsolete = fields.Boolean(
