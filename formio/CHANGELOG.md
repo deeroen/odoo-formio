@@ -1,5 +1,14 @@
 # Changelog
 
+## 16.0.14.0.0
+
+### Allow (support) versioning for publicly published forms (form builders)
+
+Add endpoint `/formio/public/form/new/current/<string:builder_public_current>` that allows to update the form builders (versioning) and keep them published when the state is "Current".\
+This required to add the `formio.builder` model field `current_uuid`, that is identical to all `formio.builder` records with the same name.
+
+(This is backported code from 17.0)
+
 ## 16.0.13.0.2
 
 New feature to allow specific Form URL (query string) params from the form it's iframe src.\
