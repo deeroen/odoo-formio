@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.0.2.0.1
+
+Remove not migrated (broken) Website Snippet.
+
+The Website Snippet is available in the `website_formio_snippet` module:\
+https://apps.odoo.com/apps/modules/16.0/website_formio_snippet/
+
 ## 16.0.2.0
 
 Reset padding, borders and background-color on the form container (class: `formio_form_iframe_container`).
