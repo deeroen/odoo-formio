@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.0.2.3.1
+
+Implement `formio.form` model method `_component_selectboxes_data_url_values_labels`.
+It generates a similar datastructure like the formio-data (library) `selectboxesCompopnent` getter `value_labels` does, with the default Values as Data Source Type.
+However this method generates `selectboxesComponent` property `value_labels`, when the Data Source Type is URL and the URL is relative (this Odoo instance).
+
 ## 16.0.2.3
 
 Add `formio.form` `markupsafe()` instance method to escape components, eg: content, html, textarea.
