@@ -3,10 +3,10 @@
 
 import logging
 
-from markupsafe import Markup
-
 from formiodata.builder import Builder
 from formiodata.form import Form
+from markupsafe import Markup
+from urllib.parse import parse_qs, urlparse
 
 from odoo import models
 from odoo.exceptions import UserError
@@ -86,3 +86,47 @@ class FormioForm(models.Model):
                 return form
         else:
             return self.__getattribute__(name)
+
+    def _component_selectboxes_data_url_values_labels(self, component):
+        """Generate selectboxesComponent value_labels when the Data
+        Source Type is URL and the URL is relative (this Odoo instance).
+
+        Similar like the formio-data (library) selectboxesCompopnent
+        does, with the default Values Data Source Type.
+        """
+        url = component.raw['data']['url']
+        o = urlparse(url)
+        values_labels = {}
+        if not o.netloc:
+            qs = parse_qs(url)
+            model = qs.get('model')
+            if model:
+                model = model[0]
+                model_obj = self.env[model]
+                # values
+                value_field = qs.get('value_field')
+                if value_field:
+                    value_field = value_field[0]
+                else:
+                    value_field = 'id'
+                if model_obj._fields[value_field] == 'integer':
+                    values = {int(k): v for k, v in component.value.items()}
+                else:
+                    values = {k: v for k, v in component.value.items()}
+                # label, sort
+                label = qs.get('label_field')[0]
+                sort = qs.get('sort')
+                if sort:
+                    sort = sort[0]
+                else:
+                    sort = model_obj._order + ', id'
+                # query records
+                domain = [(value_field, 'in', list(values.keys()))]
+                records = model_obj.sudo().search(domain, order=sort)
+                for rec in records:
+                    vals = {
+                        'label': rec[label],
+                        'value': values[rec[value_field]],
+                    }
+                    values_labels[rec[value_field]] = vals
+        return values_labels
