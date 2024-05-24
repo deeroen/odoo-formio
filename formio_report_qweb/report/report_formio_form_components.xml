@@ -135,15 +135,21 @@ See LICENSE file for full copyright and licensing details.
     <template id="selectboxes_component">
         <div class="formio_selectboxes_component formio_component mw-100 mb-3 ">
             <div class="label mb-2"><t t-call="formio_report_qweb.component_label"/></div>
-            <t t-foreach="component.values_labels" t-as="sbox">
+            <t t-if="component.dataSrc == 'url'">
+                <t t-set="values_labels" t-value="o._component_selectboxes_data_url_values_labels(component)"/>
+            </t>
+            <t t-else="">
+                <t t-set="values_labels" t-value="component.values_labels"/>
+            </t>
+            <t t-foreach="values_labels" t-as="sbox">
                 <div>
-                    <t t-if="component.values_labels[sbox]['value'] == true">
+                    <t t-if="values_labels[sbox]['value'] == true">
                         <input type="checkbox" checked="checked" disable="disabled"/>
                     </t>
                     <t t-else="">
                         <input type="checkbox" disable="disabled"/>
                     </t>
-                    <span><t t-out="component.values_labels[sbox]['label']"/></span>
+                    <span><t t-out="values_labels[sbox]['label']"/></span>
                 </div>
             </t>
         </div>
