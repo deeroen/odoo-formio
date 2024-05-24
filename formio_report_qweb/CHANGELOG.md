@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.0.1.3.1
+
+Improve the `selectboxes_component` QWeb template when the Data Source Type is URL.
+
 ## 16.0.1.3
 
 Move the `formio.form` `markupsafe()` instance method to the `formio_data_api` module.\
