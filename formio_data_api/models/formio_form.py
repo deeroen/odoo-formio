@@ -93,6 +93,7 @@ class FormioForm(models.Model):
 
         Similar like the formio-data (library) selectboxesCompopnent
         does, with the default Values Data Source Type.
+        :param component obj: formio-data (package) Component object
         """
         url = component.raw['data']['url']
         o = urlparse(url)

@@ -17,7 +17,7 @@ from odoo.http import request
 _logger = logging.getLogger(__name__)
 
 
-class LicenseController(http.Controller):
+class FormioMain(http.Controller):
 
     @http.route(['/web/content/<int:id>/fonts/<string:name>'], type='http', auth="public")
     def send_fonts_file(self, id, name, **kwargs):
