@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.0.14.0.1
+
+In Form (model, views) add field Submission Commercial Entity related to the Submission Partner.
+
 ## 16.0.14.0.0
 
 ### Allow (support) versioning for publicly published forms (form builders)
