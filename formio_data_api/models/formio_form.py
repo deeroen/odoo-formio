@@ -101,7 +101,7 @@ class FormioForm(models.Model):
         if not o.netloc:
             qs = parse_qs(url)
             model = qs.get('model')
-            if model:
+            if model and component.value:
                 model = model[0]
                 model_obj = self.env[model]
                 # values
