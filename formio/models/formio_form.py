@@ -93,6 +93,10 @@ class Form(models.Model):
         help='User who submitted the form.')
     submission_partner_id = fields.Many2one('res.partner', related='submission_user_id.partner_id', string='Submission Partner')
     submission_partner_name = fields.Char(related='submission_partner_id.name', string='Submission Partner Name')
+    submission_commercial_partner_id = fields.Many2one(
+        related='submission_user_id.partner_id.commercial_partner_id',
+        string='Submission Commercial Entity'
+    )
     submission_date = fields.Datetime(
         string='Submission Date', readonly=True, tracking=True,
         help='Datetime when the form was last submitted.')

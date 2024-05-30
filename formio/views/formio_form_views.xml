@@ -18,6 +18,7 @@ See LICENSE file for full licensing details. -->
                 <field name="builder_id"/>
                 <field name="user_id"/>
                 <field name="submission_partner_id"/>
+                <field name="submission_commercial_partner_id" optional="hide"/>
                 <field name="submission_date"/>
                 <field name="state"/>
                 <button
@@ -208,6 +209,7 @@ See LICENSE file for full licensing details. -->
                             <field name="user_id" groups="formio.group_formio_user_all_forms" readonly="state in ['COMPLETE', 'CANCEL']"/>
                             <field name="submission_partner_id" string="Submission Partner"/>
                             <field name="submission_user_id" groups="base.group_erp_manager" string="Submission User"/>
+                            <field name="submission_commercial_partner_id"/>
                             <field name="submission_date" string="Submission Date"/>
                         </group>
                     </group>

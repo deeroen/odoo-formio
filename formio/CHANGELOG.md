@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.0.4.0.3
+
+In Form (model, views) add field Submission Commercial Entity related to the Submission Partner.
+
 ## 17.0.4.0.2
 
 New feature to allow specific Form URL (query string) params from the form it's iframe src.\
