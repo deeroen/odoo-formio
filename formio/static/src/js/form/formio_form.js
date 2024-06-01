@@ -176,6 +176,7 @@ export class OdooFormioForm extends Component {
         const hasChanged = typeof changed !== 'undefined' && typeof changed.changed !== 'undefined';
         if (hasChanged) {
             if (changed.changed.component) {
+                self.ensureSubmissionMetadata(form);
                 const component = changed.changed.component;
                 const instance = changed.changed.instance;
                 if (component.properties.hasOwnProperty('change')) {
@@ -709,6 +710,25 @@ export class OdooFormioForm extends Component {
         else {
             // not really ok, but could work
             return language.slice(0, 2);
+        }
+    }
+
+    /**
+     * Ensure the submission always has default metadata and selectData.
+     *
+     * This is a workaround (formio.js 4.18.2, 4.19.3) to prevent the change
+     * event from crashing due to missing metadata.selectData.
+     * This affects the change event on a selectboxes component with URL as a
+     * Data Source Type.
+     *
+     * @param form: The form instance
+     */
+    ensureSubmissionMetadata(form) {
+        if (!form.submission.metadata) {
+            form.submission.metadata = {};
+        }
+        if (!form.submission.metadata.selectData) {
+            form.submission.metadata.selectData = {};
         }
     }
 }
