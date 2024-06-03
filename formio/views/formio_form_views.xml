@@ -187,9 +187,9 @@ See LICENSE file for full licensing details. -->
                     </div>
                     <group name="general">
                         <group>
-                            <field name="res_name" string="Resource" attrs="{'invisible': [('res_name', '=', False)]}"/>
                             <field name="builder_id" attrs="{'readonly': [('id', '!=', False)]}" domain="builder_id_domain"/>
                             <field name="builder_id_domain" invisible="1"/>
+                            <field name="res_name" string="Resource" attrs="{'invisible': [('res_name', '=', False)]}"/>
                         </group>
                         <group>
                             <field name="id" attrs="{'invisible': [('id', '=', False)]}"/>
@@ -202,9 +202,11 @@ See LICENSE file for full licensing details. -->
                         <group attrs="{'invisible': [('builder_id', '=', False)]}">
                             <field name="invitation_mail_template_id" invisible="1"/>
                             <field name="user_id" groups="formio.group_formio_user_all_forms" attrs="{'readonly': [('state', 'in', ['COMPLETE', 'CANCEL'])]}"/>
+                        </group>
+                        <group attrs="{'invisible': [('builder_id', '=', False)]}">
                             <field name="submission_partner_id" string="Submission Partner"/>
-                            <field name="submission_user_id" groups="base.group_erp_manager" string="Submission User"/>
                             <field name="submission_commercial_partner_id"/>
+                            <field name="submission_user_id" groups="base.group_erp_manager" string="Submission User"/>
                             <field name="submission_date" string="Submission Date"/>
                         </group>
                     </group>
