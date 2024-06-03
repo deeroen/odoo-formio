@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.0.4.0.4
+
+Improve Form form-view layout. Move submission fields to the right (group).
+
 ## 17.0.4.0.3
 
 In Form (model, views) add field Submission Commercial Entity related to the Submission Partner.

@@ -192,9 +192,9 @@ See LICENSE file for full licensing details. -->
                     </div>
                     <group name="general">
                         <group>
-                            <field name="res_name" string="Resource" invisible="res_name == False"/>
                             <field name="builder_id" readonly="id != False" domain="builder_id_domain"/>
                             <field name="builder_id_domain" invisible="1"/>
+                            <field name="res_name" string="Resource" invisible="res_name == False"/>
                         </group>
                         <group>
                             <field name="id" invisible="id == False"/>
@@ -207,9 +207,11 @@ See LICENSE file for full licensing details. -->
                         <group invisible="builder_id == False">
                             <field name="invitation_mail_template_id" invisible="1"/>
                             <field name="user_id" groups="formio.group_formio_user_all_forms" readonly="state in ['COMPLETE', 'CANCEL']"/>
+                        </group>
+                        <group invisible="builder_id == False">
                             <field name="submission_partner_id" string="Submission Partner"/>
+                            <field name="submission_commercial_partner_id" invisible="submission_commercial_partner_id == submission_partner_id"/>
                             <field name="submission_user_id" groups="base.group_erp_manager" string="Submission User"/>
-                            <field name="submission_commercial_partner_id"/>
                             <field name="submission_date" string="Submission Date"/>
                         </group>
                     </group>
