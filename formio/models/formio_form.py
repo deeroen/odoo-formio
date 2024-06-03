@@ -57,10 +57,15 @@ class Form(models.Model):
         string='UUID')
     title = fields.Char(string='Title', required=True, index=True, tracking=True)
     state = fields.Selection(
-        [(STATE_PENDING, 'Pending'), (STATE_DRAFT, 'Draft'),
-         (STATE_COMPLETE, 'Completed'), (STATE_CANCEL, 'Canceled')],
-        string="State", default=STATE_PENDING, tracking=True, index=True)
-    display_state = fields.Char("Display State", compute='_compute_display_fields', store=False)
+        selection=[
+            (STATE_PENDING, 'Pending'),
+            (STATE_DRAFT, 'Draft'),
+            (STATE_COMPLETE, 'Completed'),
+            (STATE_CANCEL, 'Canceled'),
+        ],
+        string='State', default=STATE_PENDING, tracking=True, index=True
+    )
+    display_state = fields.Char('Display State', compute='_compute_display_fields', store=False)
     kanban_group_state = fields.Selection(
         [('A', 'Pending'), ('B', 'Draft'), ('C', 'Completed'), ('D', 'Canceled')],
         compute='_compute_kanban_group_state', store=True)
