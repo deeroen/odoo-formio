@@ -627,7 +627,7 @@ class Form(models.Model):
         return {}
 
     def _generate_odoo_domain(self, domain=[], params={}):
-        return self.builder_id._generate_odoo_domain(domain, params)
+        return self.builder_id._generate_odoo_domain(domain=domain, params=params)
 
     def i18n_translations(self):
         i18n = self.builder_id.i18n_translations()
