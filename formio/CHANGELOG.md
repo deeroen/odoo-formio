@@ -1,5 +1,10 @@
 # Changelog
 
+## 16.0.15.0.0
+
+Fix random and unexplainable "ReverseProxy read errors" on webservers other than Nginx (e.g. Caddy, Traefik).\
+This only required to change `/config` and `/submission` endpoints from HTTP POST to GET request methods.
+
 ## 16.0.14.0.2
 
 Improve Form form-view layout. Move submission fields to the right (group).
