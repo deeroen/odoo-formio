@@ -368,17 +368,11 @@ export class OdooFormioForm extends Component {
     }
 
     getData(url, data) {
-        let dataPost = {...data};
-        if (this.formUuid) {
-            dataPost['form_uuid'] = this.formUuid;
-        }
-        dataPost['csrf_token'] = this.csrfToken;
         return $.ajax(
             {
                 url: url,
-                method: 'POST',
+                method: 'GET',
                 contentType: 'application/json',
-                data: JSON.stringify(dataPost)
             }
         );
     }

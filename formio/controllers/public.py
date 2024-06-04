@@ -49,7 +49,7 @@ class FormioPublicController(http.Controller):
             }
             return request.render('formio.formio_form_public_embed', values)
 
-    @http.route('/formio/public/form/<string:form_uuid>/config', type='http', auth='public', csrf=False, website=True)
+    @http.route('/formio/public/form/<string:form_uuid>/config', type='http', auth='public', methods=['GET'],csrf=False, website=True)
     def form_config(self, form_uuid, **kwargs):
         form = self._get_public_form(form_uuid, self._check_public_form())
         res = {'schema': {}, 'options': {}, 'params': {}}
@@ -67,7 +67,7 @@ class FormioPublicController(http.Controller):
             res['options'].update(etl_odoo_config.get('options', {}))
         return request.make_json_response(res)
 
-    @http.route('/formio/public/form/<string:uuid>/submission', type='http', auth='public', csrf=False, website=True)
+    @http.route('/formio/public/form/<string:uuid>/submission', type='http', methods=['GET'], auth='public', csrf=False, website=True)
     def public_form_submission(self, uuid):
         form = self._get_public_form(uuid, self._check_public_form())
 
@@ -179,8 +179,8 @@ class FormioPublicController(http.Controller):
             }
             return request.render('formio.formio_form_public_new_embed', values)
 
-    @http.route('/formio/public/form/new/<string:builder_uuid>/config', type='http', auth='public', csrf=False, website=True)
-    def public_form_new_config(self, builder_uuid, **kwargs):
+    @http.route('/formio/public/form/new/<string:builder_uuid>/config', type='http', auth='public', methods=['GET'], csrf=False, website=True)
+    def public_form_new_config(self, builder_uuid):
         formio_builder = self._get_public_builder(builder_uuid)
         res = {'schema': {}, 'options': {}}
 
@@ -200,8 +200,8 @@ class FormioPublicController(http.Controller):
 
         return request.make_json_response(res)
 
-    @http.route('/formio/public/form/new/<string:builder_uuid>/submission', type='http', auth='public', csrf=False, website=True)
-    def public_form_new_submission(self, builder_uuid, **kwargs):
+    @http.route('/formio/public/form/new/<string:builder_uuid>/submission', type='http', auth='public', methods=['GET'], csrf=False, website=True)
+    def public_form_new_submission(self, builder_uuid):
         formio_builder = self._get_public_builder(builder_uuid)
 
         if not formio_builder or not formio_builder.public:

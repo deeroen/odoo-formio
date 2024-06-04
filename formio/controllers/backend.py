@@ -57,8 +57,8 @@ class FormioController(http.Controller):
         }
         return request.render('formio.formio_builder_embed', values)
 
-    @http.route('/formio/builder/<int:builder_id>/config', type='http', auth='user', methods=['POST'], csrf=False, website=True)
-    def builder_config(self, builder_id, **kwargs):
+    @http.route('/formio/builder/<int:builder_id>/config', type='http', auth='user', methods=['GET'], csrf=False)
+    def builder_config(self, builder_id):
         if not request.env.user.has_group('formio.group_formio_admin'):
             return
         builder = request.env['formio.builder'].browse(builder_id)
@@ -120,7 +120,7 @@ class FormioController(http.Controller):
         }
         return request.render('formio.formio_form_embed', values)
 
-    @http.route('/formio/form/<string:form_uuid>/config', type='http', auth='user', csrf=False, website=True)
+    @http.route('/formio/form/<string:form_uuid>/config', type='http', auth='user', methods=['GET'], csrf=False, website=True)
     def form_config(self, form_uuid):
         form = self._get_form(form_uuid, 'read')
         # TODO remove config (key)
@@ -134,7 +134,7 @@ class FormioController(http.Controller):
             res['csrf_token'] = request.csrf_token()
         return request.make_json_response(res)
 
-    @http.route('/formio/form/<string:uuid>/submission', type='http', auth='user', csrf=False, website=True)
+    @http.route('/formio/form/<string:uuid>/submission', type='http', auth='user', methods=['GET'], csrf=False, website=True)
     def form_submission(self, uuid):
         form = self._get_form(uuid, 'read')
 

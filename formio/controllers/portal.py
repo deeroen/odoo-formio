@@ -105,7 +105,7 @@ class FormioCustomerPortal(CustomerPortal):
     ####################
 
     @http.route(['/my/formio'], type='http', auth="user", website=True)
-    def portal_forms(self, sortby=None, search=None, search_in='content',  **kwargs):
+    def portal_forms(self, sortby=None, search=None, search_in='content', **kwargs):
         domain = [
             ('user_id', '=', request.env.user.id),
             ('portal_share', '=', True)
@@ -270,8 +270,8 @@ class FormioCustomerPortal(CustomerPortal):
     # Form - portal - new
     #####################
 
-    @http.route('/formio/portal/form/new/<string:builder_uuid>/config', type='http', auth='user', csrf=False, website=True)
-    def form_new_config(self, builder_uuid, **kwargs):
+    @http.route('/formio/portal/form/new/<string:builder_uuid>/config', type='http', auth='user', methods=['GET'], csrf=False, website=True)
+    def form_new_config(self, builder_uuid):
         builder = self._get_builder_uuid(builder_uuid)
         res = {'schema': {}, 'options': {}, 'params': {}}
 
@@ -291,8 +291,8 @@ class FormioCustomerPortal(CustomerPortal):
 
         return request.make_json_response(res)
 
-    @http.route('/formio/portal/form/new/<string:builder_uuid>/submission', type='http', auth='user', csrf=False, website=True)
-    def form_new_submission(self, builder_uuid, **kwargs):
+    @http.route('/formio/portal/form/new/<string:builder_uuid>/submission', type='http', auth='user', methods=['GET'], csrf=False, website=True)
+    def form_new_submission(self, builder_uuid):
         builder = self._get_builder_uuid(builder_uuid)
 
         if not builder:
