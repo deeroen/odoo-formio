@@ -1,5 +1,12 @@
 # Changelog
 
+## 17.0.5.0.1
+
+Add Forms License Renewal Reminders by Activities:\
+- Configure the Renewal Reminder weeks and assign the internal users to be notified.
+- Renewal Reminder Activities can be generated and regenerated after configuration (weeks, users).
+- Activities are created and notified, also by a scheduled action (cron) when these activities have passed.
+
 ## 17.0.5.0.0
 
 Fix random and unexplainable "ReverseProxy read errors" on webservers other than Nginx (e.g. Caddy, Traefik).\
