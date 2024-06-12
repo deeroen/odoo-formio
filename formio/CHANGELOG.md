@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.0.15.0.1
+
+Improve the reset of installed formio.js versions (download and reinstall of formio.js assets).\
+This doesn't delete the formio.version record anymore, but replaces the formio.js assets.\
+Also, the default CSS assets (e.g. bootstrap CSS) are no longer deleted, so manual addition/repair is no longer necessary.
+
 ## 16.0.15.0.0
 
 Fix random and unexplainable "ReverseProxy read errors" on webservers other than Nginx (e.g. Caddy, Traefik).\
