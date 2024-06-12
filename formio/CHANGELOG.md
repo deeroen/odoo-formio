@@ -1,8 +1,14 @@
 # Changelog
 
+## 17.0.5.0.2
+
+Improve the reset of installed formio.js versions (download and reinstall of formio.js assets).\
+This doesn't delete the formio.version record anymore, but replaces the formio.js assets.\
+Also, the default CSS assets (e.g. bootstrap CSS) are no longer deleted, so manual addition/repair is no longer necessary.
+
 ## 17.0.5.0.1
 
-Add Forms License Renewal Reminders by Activities:\
+Add Forms License Renewal Reminders by Activities:
 - Configure the Renewal Reminder weeks and assign the internal users to be notified.
 - Renewal Reminder Activities can be generated and regenerated after configuration (weeks, users).
 - Activities are created and notified, also by a scheduled action (cron) when these activities have passed.

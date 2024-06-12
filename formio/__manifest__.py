@@ -4,7 +4,7 @@
 {
     'name': 'Forms',
     'summary': 'Form Builder for backend, portal, website and embedded forms, to collect any information you need for your business.',
-    'version': '17.0.5.0.1',
+    'version': '17.0.5.0.2',
     'license': 'LGPL-3',
     'author': 'Nova Code',
     'website': 'https://www.novaforms.app',
@@ -29,6 +29,7 @@
         'data/formio_default_version_data.xml',
         'data/ir_config_param.xml',
         'data/ir_cron_data.xml',
+        'data/ir_server_action.xml',
         'data/mail_activity_data.xml',
         'data/mail_template_data.xml',
         # translations

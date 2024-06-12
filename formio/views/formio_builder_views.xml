@@ -116,8 +116,8 @@ See LICENSE file for full licensing details. -->
                         </h1>
                     </div>
                     <group>
-                        <div colspan="2" class="alert alert-info pt-2 pb-2" role="alert" invisible="id == False or is_schema_empty == False">
-                            <i class="fa fa-info-circle" title="info"/> Start building a form by clicking the button [ <i class="fa fa-rocket"/> Form Builder ]
+                        <div colspan="2" class="alert alert-info pt-3 pb-3" role="alert" invisible="id == False or is_schema_empty == False">
+                            <i class="fa fa-info-circle" title="info"/> Start building a form by clicking the button <i class="fa fa-rocket"/> Form Builder
                         </div>
                         <group>
                             <field name="name"
