@@ -15,9 +15,22 @@ class Form(models.Model):
         vals = super(Form, self)._prepare_create_vals(vals)
         builder = self._get_builder_from_id(vals.get('builder_id'))
         res_id = self._context.get('active_id')
+        
+        if not res_id :
+            if not builder.res_model_id.model == 'crm.lead' or not builder:
+                return vals
+ 
+            uid = self._context.get('uid')   
 
-        if not builder or not builder.res_model_id.model == 'crm.lead' or not res_id:
-            return vals
+            # Could Also Set the Team here
+            new_lead = self.env['crm.lead'].sudo().create({
+                'name': self.env["formio.builder"].browse(vals.get('builder_id')).title,
+		        'formio_forms': [(4, self.id)], 
+                'user_id': self.env["formio.builder"].browse(vals.get('builder_id')).create_uid.id,
+                'partner_id': self.env['res.users'].browse(uid).partner_id.id,
+            })
+            res_id = new_lead.id
+
 
         lead = self.env['crm.lead'].browse(res_id)
         action = self.env.ref('crm.crm_case_tree_view_oppor')
